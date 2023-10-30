@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup Page</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#signup-form").validate({
+				rules: {
+					name: "required",
+					age: {
+						required: true,
+						number: true
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					dob: {
+						required: true,
+						date: true
+					},
+					contact: {
+						required: true,
+						number: true,
+						minlength: 10,
+						maxlength: 10
+					},
+					profile: {
+						required: true,
+						extension: "png|jpg|jpeg"
+					}
+				},
+				messages: {
+					name: "Please enter your name",
+					age: {
+						required: "Please enter your age",
+						number: "Please enter a valid age"
+					},
+					email: {
+						required: "Please enter your email",
+						email: "Please enter a valid email"
+					},
+					dob: {
+						required: "Please enter your date of birth",
+						date: "Please enter a valid date of birth"
+					},
+					contact: {
+						required: "Please enter your contact number",
+						number: "Please enter a valid contact number",
+						minlength: "Please enter a 10-digit contact number",
+						maxlength: "Please enter a 10-digit contact number"
+					},
+					profile: {
+						required: "Please upload your profile image",
+						extension: "Please upload a valid image file (png, jpg, jpeg)"
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Signup Page</h1>
+	<form id="signup-form" method="post" action="signup.php" enctype="multipart/form-data">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name"><br><br>
+		<label for="age">Age:</label>
+		<input type="text" id="age" name="age"><br><br>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email"><br><br>
+		<label for="dob">Date of Birth (dd-mm-yyyy):</label>
+		<input type="text" id="dob" name="dob"><br><br>
+		<label for="contact">Contact Number:</label>
+		<input type="text" id="contact" name="contact"><br><br>
+		<label for="profile">Profile Image:</label>
+		<input type="file" id="profile" name="profile"><br><br>
+		<input type="submit" value="Signup">
+	</form>
+</body>
+</html>
